@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adidas US Sales Performance Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero-card">
+      <div class="brand-lockup">
+        <div class="adidas-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div>
+          <p class="eyebrow">Analytics Dashboard</p>
+          <h1>Adidas US Sales Performance</h1>
+        </div>
+      </div>
+      <p class="hero-copy">
+        Interactive overview of Adidas US sales performance by retailer, region, product category, sales method, and state.
+      </p>
+      <div class="hero-meta">
+        <span>Dataset: 9,648 transactions</span>
+        <span>Period: Jan 2020 – Dec 2021</span>
+      </div>
+    </header>
+
+    <section class="control-panel" aria-label="Dashboard filters">
+      <div class="filter-group">
+        <label for="yearFilter">Year</label>
+        <select id="yearFilter"></select>
+      </div>
+      <div class="filter-group">
+        <label for="regionFilter">Region</label>
+        <select id="regionFilter"></select>
+      </div>
+      <div class="filter-group">
+        <label for="retailerFilter">Retailer</label>
+        <select id="retailerFilter"></select>
+      </div>
+      <div class="filter-group">
+        <label for="methodFilter">Sales Method</label>
+        <select id="methodFilter"></select>
+      </div>
+      <div class="filter-group wide-filter">
+        <label for="productFilter">Product</label>
+        <select id="productFilter"></select>
+      </div>
+      <button id="resetFilters" type="button" class="reset-btn">Reset Filters</button>
+    </section>
+
+    <section class="kpi-grid" aria-label="Key performance indicators">
+      <article class="kpi-card">
+        <span>Total Sales</span>
+        <strong id="kpiSales">$0</strong>
+        <small id="kpiSalesSub">Revenue generated</small>
+      </article>
+      <article class="kpi-card">
+        <span>Operating Profit</span>
+        <strong id="kpiProfit">$0</strong>
+        <small id="kpiProfitSub">Profit after operating costs</small>
+      </article>
+      <article class="kpi-card">
+        <span>Units Sold</span>
+        <strong id="kpiUnits">0</strong>
+        <small id="kpiUnitsSub">Total product volume</small>
+      </article>
+      <article class="kpi-card">
+        <span>Operating Margin</span>
+        <strong id="kpiMargin">0%</strong>
+        <small id="kpiMarginSub">Profit / sales</small>
+      </article>
+    </section>
+
+    <section class="insight-layout">
+      <article class="executive-card">
+        <div class="section-heading">
+          <p>Executive Insight</p>
+          <h2>What should the client focus on?</h2>
+        </div>
+        <p id="executiveSummary" class="executive-summary"></p>
+        <div id="insightPills" class="insight-pills"></div>
+      </article>
+      <article class="action-card">
+        <div class="section-heading compact">
+          <p>Recommended Actions</p>
+          <h2>Priority Moves</h2>
+        </div>
+        <ul id="recommendationList" class="recommendation-list"></ul>
+      </article>
+    </section>
+
+    <section class="dashboard-grid two-columns">
+      <article class="chart-card large-card">
+        <div class="chart-title-row">
+          <div>
+            <p>Monthly Trend</p>
+            <h2>Sales and Operating Profit</h2>
+          </div>
+          <span class="legend"><i class="legend-sales"></i>Sales <i class="legend-profit"></i>Profit</span>
+        </div>
+        <div id="trendChart" class="chart-box tall-chart"></div>
+      </article>
+
+      <article class="chart-card">
+        <div class="chart-title-row">
+          <div>
+            <p>Channel Efficiency</p>
+            <h2>Sales Method Mix</h2>
+          </div>
+        </div>
+        <div id="methodChart" class="chart-box donut-wrap"></div>
+      </article>
+    </section>
+
+    <section class="dashboard-grid two-columns">
+      <article class="chart-card">
+        <div class="chart-title-row">
+          <div>
+            <p>Retail Partner</p>
+            <h2>Sales by Retailer</h2>
+          </div>
+        </div>
+        <div id="retailerChart" class="chart-box bar-chart"></div>
+      </article>
+
+      <article class="chart-card">
+        <div class="chart-title-row">
+          <div>
+            <p>Product Portfolio</p>
+            <h2>Sales by Product Category</h2>
+          </div>
+        </div>
+        <div id="productChart" class="chart-box bar-chart"></div>
+      </article>
+    </section>
+
+    <section class="dashboard-grid two-columns">
+      <article class="chart-card">
+        <div class="chart-title-row">
+          <div>
+            <p>Regional Performance</p>
+            <h2>Sales, Profit, and Margin by Region</h2>
+          </div>
+        </div>
+        <div id="regionChart" class="region-list"></div>
+      </article>
+
+      <article class="chart-card">
+        <div class="chart-title-row">
+          <div>
+            <p>State-Level Diagnostic</p>
+            <h2>High-Value Markets to Monitor</h2>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>State</th>
+                <th>Sales</th>
+                <th>Profit</th>
+                <th>Margin</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="stateTable"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
